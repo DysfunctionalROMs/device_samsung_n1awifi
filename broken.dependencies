@@ -1,8 +1,8 @@
 [
     {
         "remote": "github",
-        "repository": "raymanfx/kernel_samsung_lt03wifi",
-        "branch": "cm-12.1",
+        "repository": "cannondalev2000/kernel_samsung_lt03wifi",
+        "branch": "5.1",
         "target_path": "kernel/samsung/lt03wifi"
     },
     {
