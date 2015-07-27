@@ -13,7 +13,7 @@
     },
     {
         "remote": "github",
-        "repository": "TeamEOS/android_hardware_samsung_slsi_exynos5-insignal",
+        "repository": "TeamEOS/hardware_samsung_slsi_exynos5-insignal",
         "branch": "lp5.1",
         "target_path": "hardware/samsung_slsi/exynos5-insignal"
     },
