@@ -9,7 +9,7 @@
         "remote": "github",
         "repository": "TeamEOS/hardware_samsung_slsi_exynos",
         "branch": "lp5.1",
-        "target_path": "hardware/hardware_samsung_slsi_exynos"
+        "target_path": "hardware/samsung_slsi/exynos"
     },
     {
         "remote": "github",
