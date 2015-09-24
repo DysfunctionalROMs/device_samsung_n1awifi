@@ -31,8 +31,8 @@
     },
     {
         "remote": "github",
-        "repository": "raymanfx/vendor_samsung_lt03wifi",
-        "branch": "cm-12.1",
+        "repository": "Orion116/vendor_samsung_lt03wifi",
+        "branch": "lp-5.1",
         "target_path": "vendor/samsung/lt03wifi"
     }
 ]
