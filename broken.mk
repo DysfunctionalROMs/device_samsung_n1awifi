@@ -1,4 +1,4 @@
-# Inherit some common LiquidSmooth stuff.
+# Inherit some common Broken stuff.
 $(call inherit-product, vendor/broken/config/common_full_tablet_wifionly.mk)
 
 $(call inherit-product, device/samsung/lt03wifi/full_lt03wifi.mk)
