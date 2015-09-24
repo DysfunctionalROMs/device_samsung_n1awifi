@@ -26,8 +26,8 @@
     {
         "remote": "github",
         "repository": "cyanogenmod/android_hardware_samsung_slsi_exynos5420",
-        "branch": "cm-12.1",
         "target_path": "hardware/samsung_slsi/exynos5420"
+        "revision": "cm-12.1"
     },
     {
         "remote": "github",
