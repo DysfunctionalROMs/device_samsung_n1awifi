@@ -31,14 +31,15 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
+    mixer_paths.xml \
     tinymix
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    af.fast_track_multiplier=1
+    $(LOCAL_PATH)/configs/audio_effects.conf:system/etc/audio_effects.conf \
+    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
+	
+#PRODUCT_PACKAGES += \
+#    libsamsung_symbols
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2560
@@ -56,8 +57,7 @@ PRODUCT_COPY_FILES += \
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
-    e2fsck \
-    setup_fs
+    e2fsck
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -66,7 +66,7 @@ PRODUCT_PACKAGES += \
 # HW composer
 PRODUCT_PACKAGES += \
     libion \
-    libcec \
+    hwcomposer.exynos5 \
     gralloc.exynos5
 
 # IR
@@ -76,6 +76,10 @@ PRODUCT_PACKAGES += \
 # Keylayouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_touchscreen.kl:system/usr/keylayout/sec_touchscreen.kl
+
+# Keystore
+PRODUCT_PACKAGES += \
+    keystore.exynos5
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -95,16 +99,23 @@ PRODUCT_PACKAGES += \
 
 # MobiCore setup
 PRODUCT_PACKAGES += \
+	mcDriverDaemon \
     libMcClient \
     libMcRegistry \
-    libgdmcprov \
-    mcDriverDaemon
+    libPaApi \
+    libgdmcprov 
 
 # Network tools
-
 PRODUCT_PACKAGES += \
     libpcap \
     tcpdump
+
+# OMX
+PRODUCT_PACKAGES += \
+    libcsc \
+    libExynosOMX_Core \
+    libOMX.Exynos.MP3.Decoder \
+    libstagefrighthw 
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -126,8 +137,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
-    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
+    frameworks/native/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
+    frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml
 
 # Power
 PRODUCT_PACKAGES += \
@@ -135,11 +149,11 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     fstab.universal5420 \
-    init.samsung.rc \
     init.universal5420.rc \
     init.universal5420.usb.rc \
     init.universal5420.wifi.rc \
-    ueventd.universal5420.rc
+    ueventd.universal5420.rc \
+    init.samsung.rc
 
 # Radio (needed for audio controls even on wifi-only)
 PRODUCT_PACKAGES += \
@@ -175,20 +189,29 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libnetcmdiface \
     macloader
+	
+# Video codecs
+PRODUCT_PACKAGES += \
+     libOMX.Exynos.AVC.Decoder \
+     libOMX.Exynos.AVC.Encoder \
+     libOMX.Exynos.HEVC.Decoder \
+     libOMX.Exynos.MPEG4.Decoder \
+     libOMX.Exynos.MPEG4.Encoder \
+     libOMX.Exynos.VP8.Decoder \
+     libOMX.Exynos.WMV.Decoder
 
+# RANDOM NUMBER GENERATOR
+PRODUCT_PACKAGES += \
+    exyrngd
+	 
 # for off charging mode
 PRODUCT_PACKAGES += \
     charger_res_images
 
-# CPU producer to CPU consumer not supported
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.bq.gpu_to_cpu_unsupported=1
-
 # call dalvik heap config
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 
+$(call inherit-product, hardware/samsung_slsi-cm/exynos5420/exynos5420.mk)
+
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/samsung/lt03wifi/lt03wifi-vendor.mk)
-
-# call Samsung LSI board support package
-$(call inherit-product, hardware/samsung_slsi/exynos5-insignal/exynos5.mk)
