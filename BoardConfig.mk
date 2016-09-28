@@ -201,6 +201,9 @@ BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
 # Force the screenshot path to CPU consumer (fix glitches)
 COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 
+# IR
+IR_HAS_ONE_FREQ_RANGE := true
+
 # SELinux
 BOARD_SEPOLICY_DIRS := \
     device/samsung/n1awifi/sepolicy
