@@ -72,9 +72,6 @@ PRODUCT_PACKAGES += \
     camera.universal5420 \
     libhwjpeg
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    camera2.portability.force_api=1
-
 # hardware/samsung/AdvancedDisplay (MDNIE)
 PRODUCT_PACKAGES += \
     AdvancedDisplay
