@@ -30,7 +30,17 @@ on post-fs-data
     chown radio system /efs/mc/mc.dat
     chmod 0640 /efs/mc/mc.dat
 
-    # SA, System SW, SAMSUNG 
+    mkdir /data/misc/bluedroiddump 0770 system system
+
+    chown system system /dev/tzic
+
+    # h2k
+    chmod 0644 /efs/redata.bin
+    chown radio radio /efs/redata.bin
+    chmod 0644 /efs/h2k.dat
+    chown radio radio /efs/h2k.dat
+    chown system system /efs/drm/h2k
+
     # create log directory
     mkdir /data/log 0775 system log
     chown system log /data/log
@@ -87,7 +97,7 @@ on boot
 
     # mobicore
     chmod 0660 /dev/s5p-smem
-    chown drm drmrpc /dev/s5p-smem
+    chown system drmrpc /dev/s5p-smem
     export MC_AUTH_TOKEN_PATH /efs
 
 #permission for TSP, Touchkey and Wacom

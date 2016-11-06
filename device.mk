@@ -24,8 +24,9 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 # Graphics
 
 # Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_CONFIG := normal large xlarge
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
+PRODUCT_AAPT_PREBUILT_DPI := xhdpi hdpi
 
 PRODUCT_PACKAGES += \
     libion \
@@ -71,9 +72,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     camera.universal5420 \
     libhwjpeg
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    camera2.portability.force_api=1
 
 # hardware/samsung/AdvancedDisplay (MDNIE)
 PRODUCT_PACKAGES += \
@@ -230,16 +228,11 @@ ADDITIONAL_BUILD_PROPERTIES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vold.umsdirtyratio=50
 
-# Storage
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sys.sdcardfs=true
-
 # Legacy stagefright media
 PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.legacyencoder=true \
     media.stagefright.less-secure=true
-    
-
+ 
 # DALVIK/ART
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
 
