@@ -7,7 +7,7 @@
   },
   {
     "remote":      "github",
-    "repository":  "zakooz/proprietary_vendor_samsung",
+    "repository":  "exynos5420/proprietary_vendor_samsung",
     "target_path": "vendor/samsung",
     "branch":      "cm-14.0"
   },
