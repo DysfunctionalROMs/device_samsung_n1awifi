@@ -381,6 +381,10 @@ on charger
     # Do not set any USB mode while charging
     setprop sys.usb.config charging
 
+# Thermal Tuning
+    write /sys/class/thermal/thermal_zone0/oneshot_trip_temp 70 80 85 95
+    write /sys/class/thermal/thermal_zone0/oneshot_trip_freq 1800 1700 1200 600
+
 on fs
 
 # Support Preload install apks
